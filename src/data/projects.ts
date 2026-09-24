@@ -1,0 +1,113 @@
+import type { Project } from '@/types/portfolio';
+
+export const projects: readonly Project[] = [
+  {
+    id: 'little-bolt',
+    number: '01',
+    title: 'Little Bolt, Big Moon',
+    category: 'Browsergame',
+    summary:
+      'Ein Roboter, ein gewaltiger Turm und der Weg zum Mond. Ein vertikaler Platformer mit aufladbaren Sprüngen und einer eigenen Spielwelt.',
+    technologies: ['JavaScript', 'HTML5 Canvas', 'ES-Module'],
+    image: {
+      src: '/assets/little-bolt.webp',
+      alt: 'Titelillustration von Little Bolt, Big Moon mit dem Roboter vor einer nächtlichen Spielwelt',
+      caption: 'Original-Titelillustration aus dem Projekt',
+    },
+    repository: 'https://github.com/willidevac/Little-Bolt-Big-Moon',
+    details:
+      'HTML5 Canvas zeichnet die Spielwelt. Klassen und native JavaScript-Module strukturieren Spiellogik und Zustände. Einstellungen und lokale Rekorde werden im Browser gespeichert.',
+    implementation:
+      'Eingabe, Bewegung und Spielzustände greifen ineinander. Die dokumentierte Architektur teilt diese Verantwortlichkeiten auf; eine automatisierte Prüfsuite begleitet die Entwicklung.',
+    status: 'Weiterbildungsprojekt mit dokumentiertem Tutorial und Prüfsuite.',
+  },
+  {
+    id: 'pokedex',
+    number: '02',
+    title: 'Pokédex',
+    category: 'API-Anbindung',
+    summary:
+      'Pokémon suchen, Eigenschaften vergleichen und Details entdecken. Eine Oberfläche für Daten aus der PokéAPI.',
+    technologies: ['JavaScript', 'REST-API', 'HTML / CSS'],
+    image: {
+      src: '/assets/pokedex-preview.webp',
+      alt: 'Pokédex mit Suchfeld und Pokémon-Karten in der echten Anwendung',
+      caption: 'Screenshot der lokalen Anwendung · September 2026',
+    },
+    repository: 'https://github.com/willidevac/pokedex',
+    details:
+      'Asynchrone Abfragen laden Listen und Detaildaten aus der PokéAPI. Map-Caches halten bereits geladene Antworten bereit. Suche und Detailansichten erschließen den Datenbestand.',
+    implementation:
+      'Promise.allSettled verarbeitet mehrere Detailabfragen unabhängig voneinander. HTTP-Fehler werden geprüft; bereits geladene Daten werden wiederverwendet.',
+    status: 'Frontend-Projekt mit Such- und Detailansichten.',
+  },
+  {
+    id: 'bestellapp',
+    number: '03',
+    title: 'Neo Neko Ramen',
+    category: 'Bestellapp',
+    summary:
+      'Gerichte auswählen, Mengen anpassen und den Warenkorb im Blick behalten. Eine Bestelloberfläche für ein fiktives Ramen-Restaurant.',
+    technologies: ['JavaScript', 'HTML', 'CSS'],
+    image: {
+      src: '/assets/bestellapp-preview.webp',
+      alt: 'Neo Neko Ramen: echte Restaurant- und Bestelloberfläche',
+      caption: 'Screenshot der lokalen Anwendung · September 2026',
+    },
+    repository: 'https://github.com/willidevac/bestellapp',
+    details:
+      'Menüdarstellung, Warenkorbsteuerung und Rückmeldungen liegen in getrennten JavaScript-Dateien. Gerichte lassen sich hinzufügen, reduzieren und entfernen.',
+    implementation:
+      'Warenkorbsteuerung und Darstellung sind voneinander getrennt. Gemeinsame Ereignisbehandlung verarbeitet die Aktionen an den Gerichten.',
+    status:
+      'Frontend-Demo mit Bestellfeedback. Keine echte Bestell- oder Zahlungsabwicklung.',
+  },
+  {
+    id: 'fotogram',
+    number: '04',
+    title: 'FoodGram',
+    category: 'Fotogram · Bildergalerie',
+    summary:
+      'Eine Fotogalerie rund ums Essen. Mit vergrößerter Bildansicht und Navigation per Maus oder Tastatur.',
+    technologies: ['JavaScript', 'HTML', 'CSS'],
+    image: {
+      src: '/assets/fotogram-preview.webp',
+      alt: 'FoodGram: echte Bildergalerie mit Essensfotos',
+      caption: 'Screenshot der lokalen Anwendung · September 2026',
+    },
+    repository: 'https://github.com/willidevac/fotogram-project',
+    details:
+      'Die Galerie öffnet Bilder in einer Lightbox. Pfeiltasten wechseln zum nächsten oder vorherigen Bild, Escape schließt die Ansicht.',
+    implementation:
+      'Maus- und Tastatureingaben verwenden denselben Bildindex und gemeinsame Funktionen. Die Navigation springt am Ende wieder zum Anfang.',
+    status: 'Frontend-Projekt mit Galerie und Lightbox.',
+  },
+  {
+    id: 'join',
+    number: '05',
+    title: 'JOIN',
+    category: 'Task-Management',
+    summary:
+      'Eine Webanwendung zur Organisation von Aufgaben und Projektfortschritt, entstanden im Rahmen meiner Weiterbildung.',
+    technologies: ['Webentwicklung', 'Aufgabenverwaltung'],
+    details:
+      'JOIN beschäftigt sich mit der übersichtlichen Organisation von Aufgaben. Die vollständige Projektdokumentation und die Zuordnung meiner Aufgaben werden ergänzt.',
+    status:
+      'Weiterbildungsprojekt. Die Detaildokumentation ist in Vorbereitung.',
+  },
+  {
+    id: 'kochgoat',
+    number: '06',
+    title: 'KochGoat',
+    category: 'Eigene Produktidee · in Entwicklung',
+    summary:
+      'Eine Social-Cooking-Plattform: Rezepte, Community und Einkaufslisten als Idee für einen gemeinsamen Kochalltag.',
+    technologies: ['Nuxt / Vue', 'TypeScript', 'Symfony'],
+    details:
+      'Die vorhandene Struktur umfasst ein Nuxt-Frontend, ein Symfony-Backend mit API Platform und eine Marketing-Seite. Rezepte, Community und Einkaufslisten gehören zum geplanten Produktumfang.',
+    implementation:
+      'Frontend, Backend und Marketing sind getrennte Projektbereiche. Die nächste Aufgabe ist, daraus klar abgegrenzte, vorzeigbare Produktfunktionen zu entwickeln.',
+    status:
+      'In Entwicklung; der beschriebene Produktumfang ist noch nicht vollständig umgesetzt.',
+  },
+];

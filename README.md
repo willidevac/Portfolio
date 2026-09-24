@@ -27,15 +27,26 @@ verwendet. `.nvmrc` hält diese Entwicklungsentscheidung fest.
 ## Aufbau
 
 ```text
-app/page.tsx                 Zusammensetzung der Startseite
-app/layout.tsx               Sprache und Seitenmetadaten
-app/globals.css              Designwerte, Layout und responsive Regeln
-lib/portfolio.ts            Typisierte Projekt- und Profildaten
-components/portfolio/       Kleine Komponenten mit klarer Aufgabe
-components/ui/accordion.tsx Vorhandene Bibliothekskomponente für Details
+src/
+  app/                      Seitenroute, Root-Layout und globale Gestaltung
+  components/
+    atoms/                  Einzelne UI-Bausteine: ExternalLink, Wordmark
+    molecules/              Zusammengesetzte Elemente: Accordion, Details, Technologien
+    organisms/              Projektkarten und vollständige Seitenbereiche
+    templates/              Seitenrahmen mit Header, Hauptinhalt und Footer
+  data/                     Profil, Projekte, Werdegang und Kenntnisse
+  types/                    Gemeinsame TypeScript-Datenmodelle
+  lib/                      Kleine technische Hilfsfunktionen
 public/assets/              Lokale, optimierte Bilder
-scripts/serve.mjs            Lokale Vorschau der fertigen statischen Dateien
+docs/                       Architektur, Hosting und offene Inhaltsfragen
+scripts/                    Lokale Vorschau der statischen Dateien
 ```
+
+Die Komponenten folgen Atomic Design. `src/app/page.tsx` übernimmt die Rolle
+der konkreten Seite; ein zweiter `pages`-Ordner würde diese Aufgabe doppeln.
+Das Template stellt den Seitenrahmen bereit, die Route setzt darin die
+inhaltlichen Bereiche zusammen. Die Zuordnung und Importregeln stehen in
+[`docs/architektur.md`](docs/architektur.md).
 
 Das bestehende React-/TypeScript-/Vinext-Grundgerüst bleibt erhalten. Die Anwendung
 zeigt nachvollziehbare Grundlagen: semantisches HTML, Daten und Darstellung
@@ -46,12 +57,15 @@ wird keine zusätzliche Qualifikation des Bewerbers abgeleitet.
 Nur die aufklappbaren Projektdetails benötigen eine eigene Client-Komponente.
 Die übrigen Abschnitte werden vorab als HTML ausgegeben. Die frühere WebMCP-
 Zusatzintegration wurde entfernt, weil das Portfolio ausschließlich Inhalte zeigt.
-Die mitgelieferte UI-Bibliothek ist Fremdcode und keine Eigenleistung.
+Der verwendete Accordion-Baustein stammt aus der mitgelieferten UI-Vorlage.
+Die übrigen unbenutzten UI-Dateien, der unbenutzte Mobile-Hook und neun nicht
+mehr benötigte direkte UI-Abhängigkeiten wurden entfernt.
 
 ## Änderungen und Prüfungen
 
-- Texte und Projektlinks zentral in `lib/portfolio.ts` pflegen.
-- Gestaltung über die Variablen am Anfang von `app/globals.css` anpassen.
+- Texte und Projektlinks in den thematisch getrennten Dateien in `src/data` pflegen.
+- Gemeinsame Datenmodelle in `src/types/portfolio.ts` pflegen; Props bleiben bei ihrer Komponente.
+- Gestaltung über die Variablen am Anfang von `src/app/globals.css` anpassen.
 - Neue Abschnitte bekommen nur dann eine eigene Komponente, wenn sie eine
   verständliche, eigenständige Aufgabe haben.
 - `npm run typecheck`: TypeScript prüfen.
@@ -67,7 +81,7 @@ werden verzögert geladen, das Portrait bevorzugt.
 
 Die Website benötigt im Betrieb keinen Node-Server, kein Benutzerkonto und keine
 Datenbank. Der Inhalt von `dist/client` kann bei einem statischen Hoster liegen.
-Konkrete Optionen und Kosten stehen in `HOSTING.md`.
+Konkrete Optionen und Kosten stehen in [`docs/hosting.md`](docs/hosting.md).
 
 ## Inhalt und Bildquellen
 
@@ -79,4 +93,4 @@ Konkrete Optionen und Kosten stehen in `HOSTING.md`.
 
 Die Website wurde mit KI-Unterstützung erstellt und überarbeitet. Eigene Beiträge,
 Teamaufgaben und KI-Einsatz bei den dargestellten Projekten müssen getrennt davon
-zutreffend beschrieben werden. Offene Inhaltsfragen stehen in `REDAKTION.md`.
+zutreffend beschrieben werden. Offene Inhaltsfragen stehen in [`docs/redaktion.md`](docs/redaktion.md).
