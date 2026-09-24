@@ -1,15 +1,21 @@
-# Redaktion vor öffentlicher Bewerbung
+# Redaktionelle Angaben
 
-Die erste Fassung ist ein privat zugänglicher Entwurf. Päplern ist ausgeschlossen.
+Stand: 24. September 2026. Päplern bleibt ausgeschlossen.
 
-- Eigenanteile, Teamaufgaben, KI-Unterstützung und Projektzeiträume mit Willi ergänzen. Keine persönliche Umsetzung konkreter Funktionen behaupten, solange die Zuordnung fehlt.
-- JOIN: vollständigen Quelltext bzw. Repository finden, Funktionen und Technologien prüfen, Detailtext ersetzen.
-- KochGoat: vorzeigbare Funktionen und Aufgabenverteilung prüfen. Der lokal konfigurierte Frontend-Remote gehört Mittelblut9; deshalb noch kein Repository-Link im Portfolio.
-- Live-Demos erst nach Prüfung eintragen. GitHub-Links der vier anderen Projekte stammen aus den lokalen Remotes; öffentliche Erreichbarkeit wurde nicht bestätigt.
-- Echte Anwendungsscreenshots können später das Original-Titelbild und die typografischen Projektflächen ergänzen. Vorhandene Fotos sind ausdrücklich als Bildmaterial gekennzeichnet.
-- Projekte wurden in diesem Arbeitsschritt nicht ausgeführt. Aussagen zu bestandenen Tests oder fertiger Produktreife werden vermieden.
-- Fachhochschulreife und Weiterbildung bleiben als angestrebte bzw. laufende Abschlüsse bezeichnet.
+## Bereits umgesetzt
 
-Website: responsive Einzelseite mit Projektübersicht, aufklappbaren Details, Werdegang und E-Mail-Kontakt. Kein Kontaktformular, keine Analyse-Dienste und keine externe Schriftdatei.
+- Neue Gestaltung und getrennte, formatierte Anwendungskomponenten.
+- Echte Screenshots von Pokédex, Bestellapp und Fotogram aus den lokal geöffneten Anwendungen.
+- Vorhandene Titelillustration von Little Bolt als solche gekennzeichnet.
+- Vier öffentliche GitHub-Verweise geprüft: jeweils HTTP 200.
+- Weiterbildungs- und Schulabschlüsse weiterhin als laufend bzw. angestrebt bezeichnet.
+- Statische Ausgabe ohne eigene Anmeldung, Datenbank, Tracking oder externe Schriftdatei.
 
-Optionale WebMCP-Funktion: list_portfolio_projects liest dieselben sechs Projekte. Kein unterstützter WebMCP-Validierungskontext verfügbar; die Registrierung wurde nicht im Browser verifiziert. Keine visuelle Browserprüfung beauftragt oder durchgeführt.
+## Inhaltlich noch zu ergänzen
+
+- Eigenanteile, Teamaufgaben, KI-Unterstützung und Zeiträume je Projekt.
+- JOIN: vollständiges Repository, konkrete Funktionen und eigene Aufgaben.
+- KochGoat: demonstrierbare Funktionen und Teambeiträge; der lokal konfigurierte Frontend-Remote gehört Mittelblut9 und wird nicht als eigenes Repository verlinkt.
+- Öffentliche Live-Demos sind nicht angegeben, solange die Zieladressen nicht bestätigt wurden.
+
+Das Öffnen der drei Projekte zur Screenshot-Erstellung ist keine vollständige Funktionsabnahme dieser Anwendungen. Die Browserprüfung bezieht sich auf das Portfolio selbst. Die frühere WebMCP-Zusatzfunktion wurde entfernt.
