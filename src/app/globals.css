@@ -285,9 +285,6 @@ ol {
   font-size: 0.8125rem;
   line-height: 1.5;
 }
-.portrait-index {
-  font: 0.75rem / 1.5 var(--font-mono);
-}
 .hero-baseline {
   grid-column: 1 / -1;
   display: flex;
@@ -745,9 +742,6 @@ h2 {
   }
   .portrait figcaption {
     font-size: 0.75rem;
-  }
-  .portrait-index {
-    display: none;
   }
   .hero-links {
     gap: 1.25rem;

@@ -54,9 +54,6 @@ export function Hero({ locale = 'de' }: { readonly locale?: Locale }) {
             <br />
             {copy.hero.perspective}
           </span>
-          <span className="portrait-index" aria-hidden="true">
-            WK / 26
-          </span>
         </figcaption>
       </figure>
       <div className="hero-baseline">
