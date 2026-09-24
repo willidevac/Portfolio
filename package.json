@@ -7,9 +7,10 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "build": "vinext build",
+    "build": "vinext build && node scripts/prepare-static.mjs",
     "start": "node scripts/serve.mjs",
     "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "lint:portfolio": "oxlint src scripts",
     "format:portfolio": "oxfmt src scripts next.config.ts vite.config.ts",
     "lint": "oxlint src scripts next.config.ts vite.config.ts",

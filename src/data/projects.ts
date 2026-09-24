@@ -89,11 +89,20 @@ export const projects: readonly Project[] = [
     category: 'Task-Management',
     summary:
       'Eine Webanwendung zur Organisation von Aufgaben und Projektfortschritt, entstanden im Rahmen meiner Weiterbildung.',
-    technologies: ['Webentwicklung', 'Aufgabenverwaltung'],
+    technologies: ['JavaScript', 'HTML / CSS', 'Firebase'],
+    image: {
+      src: '/assets/join-preview.webp',
+      alt: 'Join 360: Übersicht mit Aufgabenstatus, Prioritäten und nächster Frist im Gastzugang',
+      caption:
+        'Original-Screenshot der Summary-Ansicht aus dem JOIN-Repository',
+    },
+    repository: 'https://github.com/willidevac/Join',
     details:
-      'JOIN beschäftigt sich mit der übersichtlichen Organisation von Aufgaben. Die vollständige Projektdokumentation und die Zuordnung meiner Aufgaben werden ergänzt.',
+      'Ein gemeinsames Weiterbildungsprojekt mit Kanban-Board, Aufgabenverwaltung, Unteraufgaben und Kontakten. Die Übersicht zeigt Aufgabenstatus, dringende Aufgaben und die nächste Frist. Firebase übernimmt Anmeldung und Datenspeicherung.',
+    implementation:
+      'Die Oberfläche folgt Atomic Design. JavaScript-Dateien trennen Darstellung, Validierung, Datenverwaltung und Firebase-Anbindung. Die konkrete Zuordnung meiner Beiträge innerhalb des Teams wird ergänzt.',
     status:
-      'Weiterbildungsprojekt. Die Detaildokumentation ist in Vorbereitung.',
+      'Gruppenprojekt mit dokumentiertem Gastzugang und automatisierten Tests. Eigene Teambeiträge werden noch einzeln dokumentiert.',
   },
   {
     id: 'kochgoat',

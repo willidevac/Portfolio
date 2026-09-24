@@ -9,6 +9,7 @@ export function ExternalLink({ children, ...props }: ExternalLinkProps) {
   return (
     <a {...props} target="_blank" rel="noreferrer">
       {children}
+      <span className="sr-only"> (öffnet in einem neuen Tab)</span>
     </a>
   );
 }

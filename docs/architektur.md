@@ -7,8 +7,8 @@ zusätzlich die Daten und Schnittstellen. Das sind zwei ergänzende Entscheidung
 
 | Ebene | Aufgabe | Beispiele |
 | --- | --- | --- |
-| Atoms | Einzelne grundlegende UI-Elemente | `ExternalLink`, `Wordmark` |
-| Molecules | Kleine zusammengesetzte Elemente mit einer Aufgabe | `TechnologyList`, `Accordion`, `ProjectDetails` |
+| Atoms | Einzelne grundlegende UI-Elemente | `ExternalLink`, `InternalLink`, `Wordmark` |
+| Molecules | Kleine zusammengesetzte Elemente mit einer Aufgabe | `TechnologyList`, `Accordion`, `ProjectDetails`, `ThemeSelect` |
 | Organisms | Eigenständige Inhaltsbereiche aus mehreren Bausteinen | `ProjectCard`, `ProjectsSection`, `Hero` |
 | Templates | Übergreifender Seitenrahmen | `PortfolioTemplate` mit Header, Inhaltsbereich und Footer |
 | Pages | Konkrete Zusammenstellung einer Seite | `src/app/page.tsx` |
@@ -48,19 +48,32 @@ ein globaler Store oder Context ist für dieses Portfolio nicht erforderlich.
 
 ## Client und Gestaltung
 
-`ProjectDetails` markiert die interaktive Client-Grenze. Die übrigen eigenen
+`ProjectDetails` und `ThemeSelect` markieren die interaktiven Client-Grenzen. Die übrigen eigenen
 Komponenten werden als statisches HTML vorgerendert. Der darunter verwendete
 Accordion basiert auf Base UI und der vorhandenen Shadcn-Vorlage.
 
-Die globale Gestaltung bleibt in `src/app/globals.css`: Designvariablen, klar
-benannte Komponentenklassen und responsive Regeln. Die Strukturänderung benötigt
-keinen Wechsel des CSS-Systems. Statische Bilder bleiben unter `public/assets`.
+Die globale Gestaltung bleibt in `src/app/globals.css`: klar benannte
+Komponentenklassen und responsive Regeln. Farbpaletten liegen getrennt in
+`src/styles/themes.css`. Statische Bilder bleiben unter `public/assets`.
+
+`ThemeSelect` verwendet ein beschriftetes natives Select. `src/lib/theme.ts`
+kapselt Auswahl, Browserspeicher und Synchronisierung zwischen Tabs.
+`useSyncExternalStore` verbindet diese Browserdaten mit React; das Root-Layout
+wendet die gespeicherte Auswahl vor dem ersten Zeichnen an. CSS übernimmt die
+Systemeinstellung auch ohne JavaScript.
+
+`InternalLink` verwendet bewusst native Anker. Damit funktionieren Navigation
+und Abschnittslinks im statischen Export ohne RSC-Router oder Server.
+`scripts/prepare-static.mjs` ergänzt für exportierte HTML-Unterseiten einen
+Verzeichnisindex; `/barrierefreiheit/` funktioniert so auch auf einfachen
+statischen Hosts. Die bestehende HTML-Ausgabe bleibt erhalten.
 
 ## Prüfen
 
 ```sh
 npm run typecheck
 npm run lint
+npm test
 npm run build
 ```
 

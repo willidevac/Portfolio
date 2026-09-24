@@ -1,0 +1,51 @@
+/* Defaults follow the OS; an explicit selection overrides it. */
+:root {
+  color-scheme: light;
+  --background: #f6f7f2;
+  --surface: #ffffff;
+  --foreground: #1c251b;
+  --muted: #4e5e4a;
+  --accent: #3c651e;
+  --border: #83917c;
+  --button-text: #ffffff;
+  --button-hover: #2f5117;
+  --about-background: #e9ede4;
+  --about-foreground: #222b20;
+  --about-muted: #52604d;
+  --about-accent: #3c651e;
+  --about-border: #7b8c70;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --background: #141615;
+    --surface: #1b1e1c;
+    --foreground: #f0f1ec;
+    --muted: #a4aca5;
+    --accent: #c2ef76;
+    --border: #6b7a67;
+    --button-text: #17220c;
+    --button-hover: #d5ffa0;
+    --about-background: #20271e;
+    --about-foreground: #f0f1ec;
+    --about-muted: #b5c3ac;
+    --about-accent: #c2ef76;
+    --about-border: #74876c;
+  }
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --background: #141615;
+  --surface: #1b1e1c;
+  --foreground: #f0f1ec;
+  --muted: #a4aca5;
+  --accent: #c2ef76;
+  --border: #6b7a67;
+  --button-text: #17220c;
+  --button-hover: #d5ffa0;
+  --about-background: #20271e;
+  --about-foreground: #f0f1ec;
+  --about-muted: #b5c3ac;
+  --about-accent: #c2ef76;
+  --about-border: #74876c;
+}

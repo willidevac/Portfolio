@@ -13,7 +13,9 @@ export function PortfolioTemplate({ children }: PortfolioTemplateProps) {
         Zum Inhalt
       </a>
       <SiteHeader />
-      <main id="inhalt">{children}</main>
+      <main id="inhalt" tabIndex={-1}>
+        {children}
+      </main>
       <SiteFooter />
     </>
   );

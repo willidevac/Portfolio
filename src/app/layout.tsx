@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { themeInitializationScript } from '@/lib/theme';
 import './globals.css';
 export const metadata: Metadata = {
   title: 'Jayanath Willi Kasberg | IT-Portfolio',
@@ -11,7 +12,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="de">
+    <html lang="de" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: themeInitializationScript }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
