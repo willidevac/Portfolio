@@ -13,10 +13,14 @@ export interface Project {
   readonly technologies: readonly string[];
   readonly image?: ProjectImage;
   readonly repository?: string;
+  readonly website?: string;
   readonly details: string;
   readonly implementation?: string;
   readonly status: string;
 }
+
+export type Locale = 'de' | 'en';
+export type PageKind = 'home' | 'accessibility';
 
 export interface Profile {
   readonly name: string;

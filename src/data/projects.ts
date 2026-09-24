@@ -108,15 +108,22 @@ export const projects: readonly Project[] = [
     id: 'kochgoat',
     number: '06',
     title: 'KochGoat',
+    website: 'https://kochgoat.com',
+    image: {
+      src: '/assets/kochgoat-preview.webp',
+      alt: 'KochGoat-Marketingwebsite mit Einführung zum Kochassistenten und Beta-Programm',
+      caption:
+        'Screenshot der veröffentlichten Marketingwebsite kochgoat.com · September 2026',
+    },
     category: 'Eigene Produktidee · in Entwicklung',
     summary:
-      'Eine Social-Cooking-Plattform: Rezepte, Community und Einkaufslisten als Idee für einen gemeinsamen Kochalltag.',
+      'Ein Kochassistent für den Alltag: Rezeptideen, Wochenplanung und Einkaufslisten, mit Zico als geplanter Begleitung Schritt für Schritt.',
     technologies: ['Nuxt / Vue', 'TypeScript', 'Symfony'],
     details:
-      'Die vorhandene Struktur umfasst ein Nuxt-Frontend, ein Symfony-Backend mit API Platform und eine Marketing-Seite. Rezepte, Community und Einkaufslisten gehören zum geplanten Produktumfang.',
+      'Die öffentliche Marketingwebsite stellt das Konzept und das Beta-Programm vor. Zum Projekt gehören außerdem ein Nuxt-Frontend und ein Symfony-Backend mit API Platform. Die Website weist ausdrücklich darauf hin, dass die App noch in Entwicklung ist.',
     implementation:
       'Frontend, Backend und Marketing sind getrennte Projektbereiche. Die nächste Aufgabe ist, daraus klar abgegrenzte, vorzeigbare Produktfunktionen zu entwickeln.',
     status:
-      'In Entwicklung; der beschriebene Produktumfang ist noch nicht vollständig umgesetzt.',
+      'Marketingwebsite online; die App und die beworbenen Produktfunktionen sind noch in Entwicklung.',
   },
 ];

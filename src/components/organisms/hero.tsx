@@ -1,9 +1,12 @@
+import type { Locale } from '@/types/portfolio';
+import { getTranslation } from '@/lib/localization';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import { profile } from '@/data/profile';
 import { ExternalLink } from '@/components/atoms/external-link';
 
-export function Hero() {
+export function Hero({ locale = 'de' }: { readonly locale?: Locale }) {
+  const copy = getTranslation(locale);
   return (
     <section
       className="hero container"
@@ -11,23 +14,25 @@ export function Hero() {
       aria-labelledby="intro-title"
     >
       <div className="hero-copy">
-        <p className="eyebrow">Webentwicklung · {profile.location}</p>
+        <p className="eyebrow">
+          {copy.hero.role} · {profile.location}
+        </p>
         <h1 id="intro-title">
           <span className="first-name">Jayanath</span>
           Willi
           <br />
           <span className="accent-text">Kasberg.</span>
         </h1>
-        <p className="hero-description">
-          Ich entwickle Webanwendungen und Browsergames. Aktuell in der
-          Full-Stack-Weiterbildung — mit dem Ziel,
-          {` ${profile.studyStart}`} dual Informatik zu studieren.
-        </p>
+        <p className="hero-description">{copy.hero.description}</p>
         <div className="hero-links">
           <a href="#projekte" className="button button-primary">
-            Projekte ansehen <ArrowDown size={18} aria-hidden="true" />
+            {copy.hero.projects} <ArrowDown size={18} aria-hidden="true" />
           </a>
-          <ExternalLink className="inline-link" href={profile.github}>
+          <ExternalLink
+            locale={locale}
+            className="inline-link"
+            href={profile.github}
+          >
             GitHub <ArrowUpRight size={17} aria-hidden="true" />
           </ExternalLink>
         </div>
@@ -45,9 +50,9 @@ export function Hero() {
         </div>
         <figcaption>
           <span>
-            Technischer Hintergrund.
+            {copy.hero.background}
             <br />
-            Neue Perspektive.
+            {copy.hero.perspective}
           </span>
           <span className="portrait-index" aria-hidden="true">
             WK / 26
@@ -56,7 +61,7 @@ export function Hero() {
       </figure>
       <div className="hero-baseline">
         <span>HTML &amp; CSS / JavaScript / PHP &amp; Symfony</span>
-        <span>Duales Studium ab 2027</span>
+        <span>{copy.hero.study}</span>
       </div>
     </section>
   );

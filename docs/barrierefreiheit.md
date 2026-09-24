@@ -14,6 +14,9 @@ rechtliche Zertifizierung.
 - Kontrastreiche Farbpaletten, ausreichend große Bedienelemente und responsive Inhalte.
 - Betriebssystemeinstellung für reduzierte Bewegung und Fokus bei erzwungenen Farben.
 - Eigene Informationsseite mit Bedienhinweisen, Prüfgrenzen und E-Mail-Kontakt.
+- Deutsche und englische Seiten mit passendem `html lang`, übersetzten
+  Alternativtexten und Bedienelementen. Sprachlinks sind per Tastatur bedienbar
+  und weisen die aktuelle Sprache über `aria-current` aus.
 
 ## Geprüft
 
@@ -26,6 +29,11 @@ rechtliche Zertifizierung.
 - Browser: schmale Ansicht bei 320 CSS-Pixeln ohne horizontales Überlaufen
   und Desktopansicht bei 1440 CSS-Pixeln.
 - Browser: native Navigation zur Informationsseite und zurück.
+- Sprachergänzung: fünf Exporttests für alle vier Sprachrouten, gegenseitige
+  Sprachlinks und vorhandene Projektbilder. Im Browser Wechsel DE → EN,
+  englische Informationsseite → deutsche Informationsseite, Theme-Erhalt und
+  KochGoat-Details mit Tastatur geprüft. Die ergänzte Ansicht wurde bei 320,
+  459 und 1280 CSS-Pixeln ohne horizontales Überlaufen kontrolliert.
 
 Die Farbtests prüfen die definierten Paletten, nicht automatisch jedes mögliche
 gerenderte Element. Eine vollständige Prüfung sämtlicher WCAG-Erfolgskriterien,

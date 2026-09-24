@@ -1,7 +1,13 @@
+import type { Locale } from '@/types/portfolio';
+import { getTranslation } from '@/lib/localization';
+import { englishExperience, englishSkills } from '@/data/background-en';
 import { experience } from '@/data/experience';
 import { skills } from '@/data/skills';
 
-export function AboutSection() {
+export function AboutSection({ locale = 'de' }: { readonly locale?: Locale }) {
+  const copy = getTranslation(locale);
+  const localizedExperience = locale === 'en' ? englishExperience : experience;
+  const localizedSkills = locale === 'en' ? englishSkills : skills;
   return (
     <section
       className="about-section"
@@ -11,34 +17,23 @@ export function AboutSection() {
       <div className="container">
         <div className="about-introduction">
           <div>
-            <p className="eyebrow">02 / Über mich</p>
+            <p className="eyebrow">02 / {copy.navigation.about}</p>
             <h2 id="about-title">
-              Von der Mechanik
+              {copy.about.heading[0]}
               <br />
-              zur <span>Software.</span>
+              {copy.about.heading[1]} <span>{copy.about.heading[2]}</span>
             </h2>
           </div>
           <div className="about-copy">
-            <p className="lead">
-              Technik begleitet mich schon lange. Heute arbeite ich daran, sie
-              in Code zu übersetzen.
-            </p>
-            <p>
-              Nach meiner Ausbildung zum Kfz-Mechatroniker und acht Jahren bei
-              der Bundeswehr qualifiziere ich mich für die Softwareentwicklung.
-              Parallel zur Schule absolviere ich die Full-Stack-Weiterbildung
-              der Developer Akademie.
-            </p>
-            <p>
-              2027 möchte ich im dualen Informatikstudium weiterlernen und mein
-              Wissen in echten Projekten einsetzen.
-            </p>
+            <p className="lead">{copy.about.paragraphs[0]}</p>
+            <p>{copy.about.paragraphs[1]}</p>
+            <p>{copy.about.paragraphs[2]}</p>
           </div>
         </div>
         <div className="experience">
-          <h3>Mein Weg</h3>
+          <h3>{copy.about.journey}</h3>
           <ol>
-            {experience.map((item) => (
+            {localizedExperience.map((item) => (
               <li key={item.title}>
                 <span className="experience-period">{item.period}</span>
                 <div>
@@ -50,9 +45,9 @@ export function AboutSection() {
           </ol>
         </div>
         <div className="skills">
-          <h3>Was in meinen Projekten steckt</h3>
+          <h3>{copy.about.skills}</h3>
           <div className="skills-grid">
-            {skills.map((skill) => (
+            {localizedSkills.map((skill) => (
               <div className="skill" key={skill.title}>
                 <h4>{skill.title}</h4>
                 <p>{skill.technologies}</p>

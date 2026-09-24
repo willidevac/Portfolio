@@ -1,8 +1,17 @@
+import type { Locale } from '@/types/portfolio';
+import { getTranslation } from '@/lib/localization';
+import { englishProjects } from '@/data/projects-en';
 import { projects } from '@/data/projects';
 import { ProjectCard } from './project-card';
 
-export function ProjectsSection() {
-  const [featuredProject, ...otherProjects] = projects;
+export function ProjectsSection({
+  locale = 'de',
+}: {
+  readonly locale?: Locale;
+}) {
+  const copy = getTranslation(locale);
+  const localizedProjects = locale === 'en' ? englishProjects : projects;
+  const [featuredProject, ...otherProjects] = localizedProjects;
 
   return (
     <section
@@ -12,24 +21,26 @@ export function ProjectsSection() {
     >
       <div className="section-heading">
         <div>
-          <p className="eyebrow">01 / Projekte</p>
+          <p className="eyebrow">01 / {copy.navigation.projects}</p>
           <h2 id="projects-title">
-            Ausgewählte Arbeiten
+            {copy.projects.heading}
             <span className="heading-count">
-              ({String(projects.length).padStart(2, '0')})
+              ({String(localizedProjects.length).padStart(2, '0')})
             </span>
           </h2>
         </div>
         <p>
-          Von der ersten Interaktion
+          {copy.projects.introduction[0]}
           <br />
-          bis zur eigenen Spielwelt.
+          {copy.projects.introduction[1]}
         </p>
       </div>
-      {featuredProject && <ProjectCard project={featuredProject} featured />}
+      {featuredProject && (
+        <ProjectCard locale={locale} project={featuredProject} featured />
+      )}
       <div className="project-grid">
         {otherProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <ProjectCard locale={locale} key={project.id} project={project} />
         ))}
       </div>
     </section>

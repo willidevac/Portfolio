@@ -147,6 +147,29 @@ ol {
   gap: 0.6rem;
   font-size: 0.875rem;
 }
+.header-preferences {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.language-switch {
+  display: flex;
+  font-size: 0.875rem;
+  gap: 0.25rem;
+}
+.language-switch a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 44px;
+  border-bottom: 2px solid transparent;
+}
+.language-switch a[aria-current='page'] {
+  color: var(--accent);
+  border-bottom-color: currentColor;
+  font-weight: 700;
+}
 .theme-select label {
   color: var(--muted);
 }
@@ -341,6 +364,7 @@ h2 {
   grid-column: span 2;
 }
 .project-grid > .project-join,
+.project-grid > .project-kochgoat,
 .project-grid > .project-text {
   grid-column: span 3;
 }
@@ -357,6 +381,9 @@ h2 {
   transition: transform 0.5s ease;
 }
 .project-join .project-image img {
+  object-fit: contain;
+}
+.project-kochgoat .project-image img {
   object-fit: contain;
 }
 @media (hover: hover) {
@@ -653,7 +680,7 @@ h2 {
 }
 
 /* Layout adapts to content; no JavaScript viewport state is necessary. */
-@media (max-width: 1050px) {
+@media (max-width: 1200px) {
   .header-caption {
     display: none;
   }
@@ -759,6 +786,7 @@ h2 {
   }
   .project-grid > .project,
   .project-grid > .project-join,
+  .project-grid > .project-kochgoat,
   .project-grid > .project-text {
     grid-column: auto;
   }
@@ -805,13 +833,14 @@ h2 {
     gap: 0.5rem 1rem;
     padding-block: 1rem;
   }
-  .theme-select {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
+  .header-preferences {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: space-between;
   }
   .main-navigation {
     grid-column: 1 / -1;
+    grid-row: 3;
     justify-content: space-between;
     width: 100%;
     gap: 0.5rem;
@@ -910,7 +939,7 @@ h2 {
     width: 100%;
   }
   .main-navigation,
-  .theme-select,
+  .header-preferences,
   .hero-links,
   .contact-arrow,
   .portrait {

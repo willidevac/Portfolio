@@ -8,14 +8,15 @@ zusätzlich die Daten und Schnittstellen. Das sind zwei ergänzende Entscheidung
 | Ebene | Aufgabe | Beispiele |
 | --- | --- | --- |
 | Atoms | Einzelne grundlegende UI-Elemente | `ExternalLink`, `InternalLink`, `Wordmark` |
-| Molecules | Kleine zusammengesetzte Elemente mit einer Aufgabe | `TechnologyList`, `Accordion`, `ProjectDetails`, `ThemeSelect` |
+| Molecules | Kleine zusammengesetzte Elemente mit einer Aufgabe | `TechnologyList`, `Accordion`, `ProjectDetails`, `ThemeSelect`, `LanguageSwitch` |
 | Organisms | Eigenständige Inhaltsbereiche aus mehreren Bausteinen | `ProjectCard`, `ProjectsSection`, `Hero` |
 | Templates | Übergreifender Seitenrahmen | `PortfolioTemplate` mit Header, Inhaltsbereich und Footer |
-| Pages | Konkrete Zusammenstellung einer Seite | `src/app/page.tsx` |
+| Pages | Konkrete Zusammenstellung einer Seite für beide Sprachen | `components/pages/portfolio-page.tsx`, `accessibility-page.tsx` |
 
-`src/app/layout.tsx` ist das technische Root-Layout mit Sprache und Metadaten.
-Es ist vom gestalterischen `PortfolioTemplate` getrennt. Ein zusätzlicher
-`components/pages`-Ordner ist deshalb nicht nötig.
+Die Route-Gruppen `src/app/(de)` und `src/app/(en)` besitzen je ein kleines
+Root-Layout mit korrekter Dokumentsprache und Metadaten bereits im statischen HTML.
+Die Routen wählen die Sprache und verwenden gemeinsame Seitenkomponenten.
+Die Root-Layouts sind vom gestalterischen `PortfolioTemplate` getrennt.
 
 ## Abhängigkeiten
 
@@ -24,7 +25,7 @@ Es ist vom gestalterischen `PortfolioTemplate` getrennt. Ein zusätzlicher
 - Organisms kombinieren Molecules und Atoms; ein Abschnitt darf mehrere Organisms enthalten.
 - Molecules verwenden Atoms oder kleinere Molecules; sie importieren keine Organisms.
 - Atoms kennen keine konkreten Projekte oder Profildaten.
-- `data` importiert ausschließlich Datenmodelle über `import type`.
+- `data` darf Datenmodelle als Typen und gemeinsame Inhalte aus anderen Datendateien importieren; keine UI-Komponenten.
 - `types` enthält keine React-Komponenten, Laufzeitlogik oder Inhalte.
 - `lib` enthält technische Hilfsfunktionen ohne Abhängigkeit zu Komponenten.
 
@@ -66,7 +67,21 @@ Systemeinstellung auch ohne JavaScript.
 und Abschnittslinks im statischen Export ohne RSC-Router oder Server.
 `scripts/prepare-static.mjs` ergänzt für exportierte HTML-Unterseiten einen
 Verzeichnisindex; `/barrierefreiheit/` funktioniert so auch auf einfachen
-statischen Hosts. Die bestehende HTML-Ausgabe bleibt erhalten.
+statischen Hosts. Dies gilt auch für verschachtelte Routen wie
+`/en/accessibility/`. Die bestehende HTML-Ausgabe bleibt erhalten.
+
+## Sprachen
+
+`Locale` begrenzt die Sprache auf `de` oder `en`. `lib/localization.ts` liefert
+Texte, Seitenpfade und Metadaten; Komponenten bekommen die Sprache explizit als
+Prop. Das deutsche Wörterbuch definiert die Schlüssel, und `satisfies Translation`
+prüft die englische Fassung. Projektübersetzungen übernehmen gemeinsame IDs,
+Bildpfade und Links, sodass diese nur einmal gepflegt werden.
+
+`LanguageSwitch` ist eine Navigation mit nativen Links, `hrefLang`, ausgeschriebenem
+zugänglichem Namen und `aria-current`. Die URL hält die Sprachauswahl fest;
+es gibt weder automatische Sprachumleitung noch einen zusätzlichen Client-Store.
+Die gleichen Seiten sind wechselseitig in den Sprachmetadaten verlinkt.
 
 ## Prüfen
 
@@ -75,6 +90,7 @@ npm run typecheck
 npm run lint
 npm test
 npm run build
+npm run test:export
 ```
 
 Der statische Export liegt in `dist/client`. `npm start` öffnet dafür einen

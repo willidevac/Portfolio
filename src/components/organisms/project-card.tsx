@@ -1,3 +1,5 @@
+import type { Locale } from '@/types/portfolio';
+import { getTranslation } from '@/lib/localization';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import type { Project } from '@/types/portfolio';
@@ -8,9 +10,15 @@ import { ExternalLink } from '@/components/atoms/external-link';
 interface ProjectCardProps {
   readonly project: Project;
   readonly featured?: boolean;
+  readonly locale?: Locale;
 }
 
-export function ProjectCard({ project, featured = false }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  featured = false,
+  locale = 'de',
+}: ProjectCardProps) {
+  const copy = getTranslation(locale);
   const className = [
     'project',
     `project-${project.id}`,
@@ -44,16 +52,35 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
           <span>
             {project.number} / {project.category}
           </span>
-          {featured && <span className="featured-label">Im Fokus</span>}
+          {featured && (
+            <span className="featured-label">{copy.projects.featured}</span>
+          )}
         </div>
         <h3 id={`${project.id}-title`}>{project.title}</h3>
         <p className="project-summary">{project.summary}</p>
-        <TechnologyList technologies={project.technologies} />
-        <ProjectDetails project={project} />
+        <TechnologyList locale={locale} technologies={project.technologies} />
+        <ProjectDetails locale={locale} project={project} />
         {project.repository && (
-          <ExternalLink className="repository-link" href={project.repository}>
-            Quellcode{' '}
-            <span className="sr-only">von {project.title} auf GitHub</span>
+          <ExternalLink
+            locale={locale}
+            className="repository-link"
+            href={project.repository}
+          >
+            {copy.links.source}{' '}
+            <span className="sr-only">{project.title} (GitHub)</span>
+            <ArrowUpRight size={17} aria-hidden="true" />
+          </ExternalLink>
+        )}
+        {project.website && (
+          <ExternalLink
+            locale={locale}
+            className="repository-link"
+            href={project.website}
+          >
+            <span>
+              {copy.links.website}
+              <span className="sr-only">: {project.title}</span>
+            </span>
             <ArrowUpRight size={17} aria-hidden="true" />
           </ExternalLink>
         )}

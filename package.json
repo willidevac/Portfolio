@@ -11,6 +11,7 @@
     "start": "node scripts/serve.mjs",
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "test:export": "node --test tests/export/*.test.mjs",
     "lint:portfolio": "oxlint src scripts",
     "format:portfolio": "oxfmt src scripts next.config.ts vite.config.ts",
     "lint": "oxlint src scripts next.config.ts vite.config.ts",
